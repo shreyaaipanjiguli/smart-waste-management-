@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="/"><button>Home</button></a>
+    <a href="/logout"><button>Logout</button></a>
+</div>
+
+<div class="container">
+<h2>Manage Reports</h2>
+
+<table>
+<tr>
+<th>ID</th>
+<th>Location</th>
+<th>Description</th>
+<th>Before</th>
+<th>After</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+{% for r in reports %}
+<tr>
+<td>{{ r.id }}</td>
+<td>{{ r.location }}</td>
+<td>{{ r.description }}</td>
+
+<td><img src="{{ url_for('static', filename='uploads/' + r.image) }}" width="100"></td>
+
+<td>
+{% if r.completed_image %}
+<img src="{{ url_for('static', filename='uploads/' + r.completed_image) }}" width="100">
+{% else %} — {% endif %}
+</td>
+
+<td>{{ r.status }}</td>
+
+<td>
+{% if r.status == 'Pending' %}
+<form method="POST">
+    <input type="hidden" name="report_id" value="{{ r.id }}">
+    <select name="volunteer_id">
+        {% for v in volunteers %}
+        <option value="{{ v.id }}">{{ v.name }}</option>
+        {% endfor %}
+    </select>
+    <button>Assign</button>
+</form>
+{% elif r.status == 'Completed_by_volunteer' %}
+<form method="POST" action="/admin_approve">
+    <input type="hidden" name="report_id" value="{{ r.id }}">
+    <button>Confirm Completed</button>
+</form>
+{% endif %}
+</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+</body>
+</html>

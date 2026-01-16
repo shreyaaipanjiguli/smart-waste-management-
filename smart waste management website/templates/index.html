@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Waste Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<div class="navbar">
+    <a href="/"><button>Home</button></a>
+
+    {% if session.get('role') == 'user' %}
+        <a href="/report"><button>Report Waste</button></a>
+        <a href="/logout"><button>Logout</button></a>
+
+    {% elif session.get('role') == 'volunteer' %}
+        <a href="/volunteer_dashboard"><button>Volunteer Dashboard</button></a>
+        <a href="/logout"><button>Logout</button></a>
+
+    {% elif session.get('role') == 'admin' %}
+        <a href="/manage_reports"><button>Admin Dashboard</button></a>
+        <a href="/logout"><button>Logout</button></a>
+
+    {% else %}
+        <a href="/user_register"><button>User Register</button></a>
+        <a href="/user_login"><button>User Login</button></a>
+        <a href="/volunteer_register"><button>Volunteer Register</button></a>
+        <a href="/volunteer_login"><button>Volunteer Login</button></a>
+        <a href="/admin_login"><button>Admin</button></a>
+    {% endif %}
+</div>
+
+<!-- ================= HERO SECTION ================= -->
+<div class="hero">
+    <h1>Smart Waste Segregation & Bin Reporting System</h1>
+    <p>Making cities cleaner through digital reporting</p>
+
+    {% if session.get('role') == 'user' %}
+        <a href="/report"><button>Report Waste</button></a>
+    {% else %}
+        <a href="/user_login"><button>Report Waste</button></a>
+    {% endif %}
+</div>
+
+<!-- ================= MAIN CONTENT ================= -->
+<div class="container">
+
+    <!-- ACTION CARDS -->
+    <div class="card-container">
+        <div class="card blue">
+            <h3>🗑 Report Waste</h3>
+            <p>Report garbage, bin overflow or waste issues with photo.</p>
+            <a href="/user_login"><button>Report Now</button></a>
+        </div>
+
+        <div class="card green">
+            <h3>👤 Citizens</h3>
+            <p>Register and report waste easily from your area.</p>
+            <a href="/user_register"><button>User Register</button></a>
+        </div>
+
+        <div class="card orange">
+            <h3>🤝 Volunteers</h3>
+            <p>Join as volunteer and help clean your city.</p>
+            <a href="/volunteer_register"><button>Volunteer Register</button></a>
+        </div>
+    </div>
+
+    <!-- INFO SECTION -->
+    <h2 style="margin-top:40px;">Why This System?</h2>
+    <ul>
+        <li>✔ Faster waste reporting</li>
+        <li>✔ Proper waste segregation</li>
+        <li>✔ Real-time volunteer assignment</li>
+        <li>✔ Cleaner public places</li>
+    </ul>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+<div style="background:#0B3C5D; color:white; text-align:center; padding:15px; margin-top:40px;">
+    Smart Waste Segregation System <br>
+    CSE Mini Project – 2025
+</div>
+
+</body>
+</html>

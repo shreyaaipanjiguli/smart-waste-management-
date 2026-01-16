@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Volunteer Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+    <a href="/"><button>Home</button></a>
+    <a href="/logout"><button>Logout</button></a>
+</div>
+
+<div class="container">
+    <h2>Assigned Tasks</h2>
+
+    {% for task in tasks %}
+    <div class="card">
+        <p><b>Location:</b> {{ task.location }}</p>
+        <p><b>Description:</b> {{ task.description }}</p>
+
+        <p><b>Before:</b><br>
+        <img src="{{ url_for('static', filename='uploads/' + task.image) }}" width="150"></p>
+
+        {% if task.status == 'Assigned' %}
+        <form method="POST" action="/volunteer_complete" enctype="multipart/form-data">
+            <input type="hidden" name="report_id" value="{{ task.id }}">
+            <label>After Cleaning Image</label>
+            <input type="file" name="completed_image" required>
+            <button>Submit & Mark Completed</button>
+        </form>
+        {% else %}
+        <p>Status: {{ task.status }}</p>
+        {% endif %}
+    </div>
+    {% else %}
+    <p>No tasks assigned.</p>
+    {% endfor %}
+</div>
+
+</body>
+</html>
