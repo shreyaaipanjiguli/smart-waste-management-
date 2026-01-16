@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<div class="navbar">
+    <a href="/"><button>Home</button></a>
+    <a href="/user_register"><button>User Register</button></a>
+</div>
+
+<!-- ================= FORM ================= -->
+<div class="container">
+    <h2 style="text-align:center;">User Login</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">{{ messages[0] }}</div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        <label>Phone Number</label>
+        <input type="text" name="phone" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+</body>
+</html>

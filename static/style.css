@@ -1,0 +1,168 @@
+/* ---------------- GLOBAL ---------------- */
+* {
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: #f4f6f9;
+    color: #333;
+}
+
+/* ---------------- NAVBAR ---------------- */
+.navbar {
+    background-color: #0B3C5D;
+    padding: 12px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.navbar a {
+    text-decoration: none;
+}
+
+.navbar button {
+    background-color: #1D70B8;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.navbar button:hover {
+    background-color: #155a8a;
+}
+
+/* ---------------- HERO SECTION ---------------- */
+.hero {
+    background: linear-gradient(rgba(11,60,93,0.75), rgba(11,60,93,0.75)),
+                url('/static/hero.jpg') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.hero button {
+    font-size: 16px;
+    padding: 12px 22px;
+}
+
+/* ---------------- CONTAINERS ---------------- */
+.container {
+    padding: 30px;
+}
+
+/* ---------------- CARDS ---------------- */
+.card-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.card.blue { border-left: 5px solid #1D70B8; }
+.card.green { border-left: 5px solid #28a745; }
+.card.orange { border-left: 5px solid #fd7e14; }
+
+/* ---------------- FORMS ---------------- */
+form {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: auto;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+form input, form textarea, form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    width: 100%;
+    background-color: #1D70B8;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #155a8a;
+}
+
+/* ---------------- TABLES ---------------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #1D70B8;
+    color: white;
+}
+
+/* ---------------- STATUS BADGES ---------------- */
+.status {
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: white;
+    font-size: 12px;
+}
+
+.status.Pending { background-color: orange; }
+.status.Assigned { background-color: #17a2b8; }
+.status.Completed { background-color: #28a745; }
+
+/* ---------------- FLASH MESSAGES ---------------- */
+.flash {
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #ffdddd;
+    border-left: 4px solid red;
+}
+
+/* ---------------- IMAGES ---------------- */
+img {
+    max-width: 120px;
+    border-radius: 4px;
+}

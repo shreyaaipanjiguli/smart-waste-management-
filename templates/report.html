@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report Waste</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<div class="navbar">
+    <a href="/"><button>Home</button></a>
+    <a href="/logout"><button>Logout</button></a>
+</div>
+
+<!-- ================= FORM ================= -->
+<div class="container">
+    <h2 style="text-align:center;">Report Waste</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">{{ messages[0] }}</div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" enctype="multipart/form-data">
+        <label>Waste Location</label>
+        <input type="text" name="location" required>
+
+        <label>Description</label>
+        <textarea name="description" rows="4" required></textarea>
+
+        <label>Upload Waste Image</label>
+        <input type="file" name="image" accept="image/*" required>
+
+        <button type="submit">Submit Report</button>
+    </form>
+</div>
+
+</body>
+</html>
